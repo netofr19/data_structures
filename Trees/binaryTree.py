@@ -126,8 +126,19 @@ class BinaryTree:
             else:
                 parent_of_leftmost_node.right_child = leftmost_node.right_child
 
+    def find_min(self):
+        current = self.root_node
+        while current.left_child:
+            current = current.left_child
 
+        return current.data
     
+    def find_max(self):
+        current = self.root_node
+        while current.right_child:
+            current = current.right_child
+
+        return current.data
 
 if __name__ == '__main__':
     tree = BinaryTree()
@@ -137,6 +148,9 @@ if __name__ == '__main__':
     r = tree.insert(7)
     r = tree.insert(9)
     r = tree.insert(1)
+
+    print(f"Minimum value...: {tree.find_min()}")
+    print(f"Maximum value...: {tree.find_max()}")
 
     pos = tree.search(9)
     print(f'Path: {pos}')
